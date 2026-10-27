@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Modern product showcase powered by MongoDB." />
+  <title>Nova — Product Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="#home" aria-label="Nova home">
+      <span class="brand-mark">N</span>
+      <span>NOVA</span>
+    </a>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a class="active" href="#home">Home</a>
+      <a href="#featured">Products</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home" aria-label="Featured banners">
+      <div class="slides">
+        <article class="slide active" style="--bg: url('https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=1800&q=85')">
+          <div class="hero-content">
+            <span class="eyebrow">NEW COLLECTION</span>
+            <h1>Technology that<br><em>fits your life.</em></h1>
+            <p>Discover thoughtfully designed products for work, study, and everyday living.</p>
+          </div>
+        </article>
+        <article class="slide" style="--bg: url('https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1800&q=85')">
+          <div class="hero-content">
+            <span class="eyebrow">WORK SMARTER</span>
+            <h1>Designed for your<br><em>everyday flow.</em></h1>
+            <p>Simple tools, clean design, and reliable performance without the clutter.</p>
+          </div>
+        </article>
+        <article class="slide" style="--bg: url('https://images.unsplash.com/photo-1468495244123-6c6c332eeece?auto=format&fit=crop&w=1800&q=85')">
+          <div class="hero-content">
+            <span class="eyebrow">SMART ESSENTIALS</span>
+            <h1>Less clutter.<br><em>More possibility.</em></h1>
+            <p>Build a setup that feels as good as it performs.</p>
+          </div>
+        </article>
+        <article class="slide" style="--bg: url('https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1800&q=85')">
+          <div class="hero-content">
+            <span class="eyebrow">FOR CREATORS</span>
+            <h1>Make room for<br><em>better ideas.</em></h1>
+            <p>Practical technology that keeps up when your ideas move fast.</p>
+          </div>
+        </article>
+        <article class="slide" style="--bg: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1800&q=85')">
+          <div class="hero-content">
+            <span class="eyebrow">THE NOVA EDIT</span>
+            <h1>Good design is<br><em>always useful.</em></h1>
+            <p>Explore a curated selection of products made for real life.</p>
+          </div>
+        </article>
+      </div>
+      <div class="slider-controls">
+        <button class="arrow prev" aria-label="Previous slide">←</button>
+        <div class="dots" aria-label="Slide navigation"></div>
+        <button class="arrow next" aria-label="Next slide">→</button>
+      </div>
+      <div class="slide-count"><span id="current-slide">01</span> / 05</div>
+    </section>
+
+    <section class="featured-section" id="featured">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow dark">CURATED FOR YOU</span>
+          <h2>Featured products</h2>
+        </div>
+        <p>Our current picks, updated directly from the product database.</p>
+      </div>
+
+      <div id="product-grid" class="product-grid" aria-live="polite">
+        <div class="loading"><span></span><span></span><span></span></div>
+      </div>
+      <p id="product-error" class="status-message hidden"></p>
+    </section>
+
+    <section class="about-section" id="about">
+      <div class="about-card">
+        <span class="eyebrow">ABOUT NOVA</span>
+        <h2>Useful products.<br>Nothing extra.</h2>
+        <p>We curate modern essentials with a focus on thoughtful design, everyday usability, and lasting value.</p>
+      </div>
+      <div class="about-stat"><strong>01</strong><span>Thoughtful design</span></div>
+      <div class="about-stat"><strong>02</strong><span>Everyday utility</span></div>
+      <div class="about-stat"><strong>03</strong><span>Simple experience</span></div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <span class="eyebrow dark">GET IN TOUCH</span>
+      <h2>Have a question?</h2>
+      <p>We'd love to hear from you.</p>
+      <a href="mailto:hello@nova.example" class="contact-link">hello@nova.example <span>↗</span></a>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 NOVA</span>
+    <span>Product showcase</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
