@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Modern home decor accessories showcase powered by MongoDB." />
+  <title>NEON — Home Decor & Accessories</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="#home" aria-label="Neon home">
+      <span class="brand-mark">N</span>
+      <span>NEON</span>
+    </a>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a class="active" href="#home">Home</a>
+      <a href="#featured">Shop</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button id="cart-toggle" class="cart-toggle" type="button" aria-label="Open shopping cart">
+      <span class="cart-icon">🛒</span><span>Cart</span><b id="cart-count">0</b>
+    </button>
+  </header>
+
+  <aside id="cart-drawer" class="cart-drawer" aria-hidden="true">
+    <div class="cart-backdrop" id="cart-backdrop"></div>
+    <div class="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+      <div class="cart-header">
+        <div><span class="eyebrow dark">YOUR BAG</span><h2 id="cart-title">Shopping cart</h2></div>
+        <button id="cart-close" class="cart-close" type="button" aria-label="Close cart">×</button>
+      </div>
+      <div id="cart-items" class="cart-items"></div>
+      <div class="cart-footer">
+        <div class="cart-total"><span>Subtotal</span><strong id="cart-total">৳0</strong></div>
+        <button id="checkout-button" class="checkout-button" type="button">Checkout</button>
+        <p class="cart-note">Checkout is for demo purposes.</p>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <section class="hero" id="home" aria-label="Featured banners">
+      <div class="slides">
+        <article class="slide active" style="--bg: url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0')">
+          <div class="hero-content">
+            <span class="eyebrow">NEW HOME EDIT</span>
+            <h1>Home decor that<br><em>feels like you.</em></h1>
+            <p>Curated accents, soft textures, and statement pieces made to bring character into everyday spaces.</p>
+          </div>
+        </article>
+        <article class="slide" style="--bg: url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace')">
+          <div class="hero-content">
+            <span class="eyebrow">WARM & WELCOMING</span>
+            <h1>Small details,<br><em>big atmosphere.</em></h1>
+            <p>From sculptural lighting to textured cushions, find pieces that make a room feel finished.</p>
+            
+          </div>
+        </article>
+        <article class="slide" style="--bg: url('https://images.unsplash.com/photo-1618220179428-22790b461013')">
+          <div class="hero-content">
+            <span class="eyebrow">THE EVERYDAY EDIT</span>
+            <h1>Make space for<br><em>better living.</em></h1>
+            <p>Thoughtful vases, trays, baskets, and tabletop accents for effortless styling.</p>
+            
+          </div>
+        </article>
+        <article class="slide" style="--bg: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c')">
+          <div class="hero-content">
+            <span class="eyebrow">STYLE YOUR SPACE</span>
+            <h1>Objects with<br><em>personality.</em></h1>
+            <p>Discover modern, natural, and artisan-inspired pieces across our home decor collection.</p>
+            
+          </div>
+        </article>
+        <article class="slide" style="--bg: url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d')">
+          <div class="hero-content">
+            <span class="eyebrow">THE NEON HOME EDIT</span>
+            <h1>Good spaces are<br><em>made of details.</em></h1>
+            <p>Explore a curated collection of decor accessories for bedrooms, living rooms, desks, and more.</p>
+            
+          </div>
+        </article>
+      </div>
+      <div class="slider-controls">
+        <button class="arrow prev" aria-label="Previous slide">←</button>
+        <div class="dots" aria-label="Slide navigation"></div>
+        <button class="arrow next" aria-label="Next slide">→</button>
+      </div>
+      <div class="slide-count"><span id="current-slide">01</span> / 05</div>
+    </section>
+
+    <section class="featured-section" id="featured">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow dark">THE HOME EDIT</span>
+          <h2>Shop decor</h2>
+        </div>
+      </div>
+
+      <div class="product-search" aria-label="Product search and filters">
+        <div class="search-wrap">
+          <div class="search-field">
+            <label class="sr-only" for="product-search">Search products</label>
+            <input id="product-search" type="search" placeholder="Search home decor..." autocomplete="off" />
+            <button id="search-button" type="button" aria-label="Search">⌕</button>
+            <button id="clear-search" class="clear-search hidden" type="button" aria-label="Clear search">×</button>
+          </div>
+          <div id="search-suggestions" class="search-suggestions hidden" role="listbox" aria-label="Product suggestions"></div>
+        </div>
+        <select id="category-filter" aria-label="Filter by category">
+          <option value="">Category</option>
+        </select>
+        <select id="brand-filter" aria-label="Filter by brand">
+          <option value="">Brand</option>
+        </select>
+        <span id="result-count" class="result-count"></span>
+      </div>
+
+      <div id="product-grid" class="product-grid" aria-live="polite">
+        <div class="loading"><span></span><span></span><span></span></div>
+      </div>
+      <p id="product-error" class="status-message hidden"></p>
+    </section>
+
+    <section class="about-section" id="about">
+      <div class="about-card">
+        <span class="eyebrow">ABOUT NEON HOME</span>
+        <h2>Beautiful details.<br>Nothing extra.</h2>
+        <p>We curate home decor accessories with a focus on thoughtful design, everyday styling, and pieces that make your space feel personal.</p>
+      </div>
+      <div class="about-stat"><strong>01</strong><span>Curated decor</span></div>
+      <div class="about-stat"><strong>02</strong><span>Modern textures</span></div>
+      <div class="about-stat"><strong>03</strong><span>Easy styling</span></div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <span class="eyebrow dark">GET IN TOUCH</span>
+      <h2>Have a question?</h2>
+      <p>Need help choosing a piece?</p>
+      <a href="mailto:hello@neonhome.example" class="contact-link">hello@neonhome.example <span>↗</span></a>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 NEON HOME</span>
+    <span>Home decor & accessories</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
